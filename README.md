@@ -73,6 +73,13 @@ mesh指的是网格模型，物体表面由多边形网格组成
 
 
 
+## 网盘链接
+
+链接：https://pan.baidu.com/s/1E-dz2AE0-nIUbHsXmSNguw 
+提取码：lbek
+
+
+
 ## Unity应用拓展
 
 相关的模型文件可以导入到unity做拓展开发，这里只提供一张效果图，原始图像采集和unity项目由本人与另外两名同学共同实现~
