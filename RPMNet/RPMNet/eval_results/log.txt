@@ -1,0 +1,22 @@
+2024-02-07 14:46:38,082 [INFO] root - Command: D:/AI/3Dpointcloud/Point-cloud-registration/RPMNet/RPMNet/src/vis.py --resume D:\\AI\\3Dpointcloud\\Point-cloud-registration\\RPMNet\\RPMNet\\src\\partial-trained.pth
+2024-02-07 14:46:38,086 [INFO] root - Arguments: logdir: ../logs, dev: False, name: None, debug: False, dataset_path: ../datasets/modelnet40_ply_hdf5_2048, dataset_type: modelnet_hdf, num_points: 1024, noise_type: crop, rot_mag: 45.0, trans_mag: 0.5, partial: [0.7, 0.7], method: rpmnet, radius: 0.3, num_neighbors: 64, features: ['ppf', 'dxyz', 'xyz'], feat_dim: 96, no_slack: False, num_sk_iter: 5, num_reg_iter: 5, loss_type: mae, wt_inliers: 0.01, train_batch_size: 4, val_batch_size: 4, resume: D:\\AI\\3Dpointcloud\\Point-cloud-registration\\RPMNet\\RPMNet\\src\\partial-trained.pth, gpu: 0, test_category_file: ./data_loader/modelnet40_half2.txt, transform_file: None, eval_save_path: ../eval_results
+2024-02-07 14:46:38,087 [INFO] root - Output and logs will be saved to ../eval_results
+2024-02-07 14:46:39,150 [INFO] root - Test transforms: SetDeterministic, SplitSourceRef, RandomCrop, RandomTransformSE3_euler, Resampler, RandomJitter, ShufflePoints
+2024-02-07 14:46:39,150 [INFO] ModelNetHdf - Loading data from ../datasets/modelnet40_ply_hdf5_2048\test_files.txt for test
+2024-02-07 14:46:39,150 [INFO] ModelNetHdf - Categories used: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39].
+2024-02-07 14:46:39,890 [INFO] ModelNetHdf - Loaded 1266 test instances.
+2024-02-07 14:46:39,890 [INFO] root - Computing transforms using rpmnet
+2024-02-07 14:46:39,895 [INFO] ParameterPredictionNet - Predicting weights with dim [0].
+2024-02-07 14:46:39,895 [INFO] FeatExtractionEarlyFusion - Using early fusion, feature dim = 96
+2024-02-07 14:46:39,896 [INFO] FeatExtractionEarlyFusion - Feature extraction using features xyz, dxyz, ppf
+2024-02-07 14:57:19,070 [INFO] root - Command: D:/AI/3Dpointcloud/Point-cloud-registration/RPMNet/RPMNet/src/vis.py --resume D:\\AI\\3Dpointcloud\\Point-cloud-registration\\RPMNet\\RPMNet\\src\\partial-trained.pth
+2024-02-07 14:57:19,074 [INFO] root - Arguments: logdir: ../logs, dev: False, name: None, debug: False, dataset_path: ../datasets/modelnet40_ply_hdf5_2048, dataset_type: modelnet_hdf, num_points: 1024, noise_type: crop, rot_mag: 45.0, trans_mag: 0.5, partial: [0.7, 0.7], method: rpmnet, radius: 0.3, num_neighbors: 64, features: ['ppf', 'dxyz', 'xyz'], feat_dim: 96, no_slack: False, num_sk_iter: 5, num_reg_iter: 5, loss_type: mae, wt_inliers: 0.01, train_batch_size: 4, val_batch_size: 4, resume: D:\\AI\\3Dpointcloud\\Point-cloud-registration\\RPMNet\\RPMNet\\src\\partial-trained.pth, gpu: 0, test_category_file: ./data_loader/modelnet40_half2.txt, transform_file: None, eval_save_path: ../eval_results
+2024-02-07 14:57:19,075 [INFO] root - Output and logs will be saved to ../eval_results
+2024-02-07 14:57:20,214 [INFO] root - Test transforms: SetDeterministic, SplitSourceRef, RandomCrop, RandomTransformSE3_euler, Resampler, RandomJitter, ShufflePoints
+2024-02-07 14:57:20,214 [INFO] ModelNetHdf - Loading data from ../datasets/modelnet40_ply_hdf5_2048\test_files.txt for test
+2024-02-07 14:57:20,215 [INFO] ModelNetHdf - Categories used: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39].
+2024-02-07 14:57:21,035 [INFO] ModelNetHdf - Loaded 1266 test instances.
+2024-02-07 14:57:21,036 [INFO] root - Computing transforms using rpmnet
+2024-02-07 14:57:21,047 [INFO] ParameterPredictionNet - Predicting weights with dim [0].
+2024-02-07 14:57:21,047 [INFO] FeatExtractionEarlyFusion - Using early fusion, feature dim = 96
+2024-02-07 14:57:21,047 [INFO] FeatExtractionEarlyFusion - Feature extraction using features xyz, dxyz, ppf
