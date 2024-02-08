@@ -4,7 +4,8 @@
 - DPT-main         // 深度估计算法，模型在网盘，详见对应readme
 - RPMNet            // 同源点云配准算法，模型在网盘，参考[yewzijian/RPMNet: RPM-Net: Robust Point Matching using Learned Features (CVPR2020) (github.com)](https://github.com/yewzijian/RPMNet)
 - tools                  // 一系列处理工具，因时间原因没有写成接口，后续有需要的uus可以自行修改
-- colmap-pipeline.py            //colmap接口，详见[COLMAP — COLMAP 3.9-dev documentation](https://colmap.github.io/index.html)
+- colmap-pipeline.py            // colmap接口，详见[COLMAP — COLMAP 3.9-dev documentation](https://colmap.github.io/index.html)
+- BinocularDisparity             // 双目深度估计算法，包含生成点云的方法，显存需求较大
 
 
 
@@ -39,6 +40,18 @@ colmap提供了一个sample数据集，其中一个demo已传至网盘pcd-datase
 ## ContextCapture
 
 强大的三维重建方法，提供api支持和图形化界面，具体调用方法如cc-pipeline中automaster.py所示，需要根据自己的需要如输出格式（obj/ply/fbx....）修改对应参数，调用api需要先安装whl文件并安装cc，文件已传网盘
+
+
+
+## DPT-main 
+
+单视图深度估计算法，作为深度估计较为高效的方法，用作将rgb图像转为点云数据的中间过程
+
+
+
+## BinocularDisparity
+
+以 STereo TRansformer(STTR)为pipeline的双目深度估计算法，与DPT算法相比效果较好，并包含了从双目rgb图像到单视角三维点云映射的pipeline，需要自行更改方法相关参数，模型在网盘，具体内容参考STTR官方开源项目
 
 
 
