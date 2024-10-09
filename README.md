@@ -1,101 +1,104 @@
-## 代码目录结构
+## Repository Directory Structure
 
-- cc-pipeline       // 对应使用ContextCapture进行三维重建的方法，需要先自行安装cc，安装包在网盘
-- DPT-main         // 深度估计算法，模型在网盘，详见对应readme
-- RPMNet            // 同源点云配准算法，模型在网盘，参考[yewzijian/RPMNet: RPM-Net: Robust Point Matching using Learned Features (CVPR2020) (github.com)](https://github.com/yewzijian/RPMNet)
-- tools                  // 一系列处理工具，因时间原因没有写成接口，后续有需要的uus可以自行修改
-- colmap-pipeline.py            // colmap接口，详见[COLMAP — COLMAP 3.9-dev documentation](https://colmap.github.io/index.html)
-- BinocularDisparity             // 双目深度估计算法，包含生成点云的方法，显存需求较大
+- cc-pipeline       // the 3D reconstruction pipeline based on contextCapture
+- DPT-main         // single-view depth prediction algorithm
+- RPMNet            // same source point cloud registration algorithm，see [yewzijian/RPMNet: RPM-Net: Robust Point Matching using Learned Features (CVPR2020) (github.com)](https://github.com/yewzijian/RPMNet)
+- tools                  // A series of tools used for handling modal transformations, etc
+- colmap-pipeline.py            // colmap interface，see [COLMAP — COLMAP 3.9-dev documentation](https://colmap.github.io/index.html)
+- BinocularDisparity             // Binocular depth estimation algorithm, including methods for generating point clouds, with high memory requirements
 
 
 
-## tools说明
 
-文件名显示表明了方法的作用，部分函数需要根据实际使用的相机内参和对应的成像结果调整对应参数，如rgbd2ply.py中的图片HW参数和相机内参矩阵参数
+## Tools Description
 
-ply_vis.py为使用open3d可视化pointcloud和mesh的方法，通过读取ply格式文件进行可视化，同时包含了移除异常点（outlier）的函数，以及体素下采样函数，函数末尾包含保存点云和mesh模型的代码，可以根据需要调用
+the file name indicates the function of the method, and some functions need to adjust their corresponding parameters based on the actual camera parameters and imaging results used, such as the image HW parameter and camera intrinsics in rgbd2ply.py.
 
 
 
 ## RPMNet
 
-RPMNet是一种基于modelnet40训练的同源点云配准方法，效果较优，但也存在更为优越的方法，如DGR，建议关注sota模型
+RPMNet is a homologous point cloud registration method based on modelnet40 training, which has better performance, but there are also more superior methods, such as DGR. It is recommended to pay attention to the SOTA model.
 
 
 
-## colmap
+## Colmap
 
-一个非常好用的一体化三维重建工具，提供了简易的api调用，如pipeline所示，同时提供了图形化界面的开源项目，效果也不错，适合用来上手，详见https://colmap.github.io/index.html
+A very useful integrated 3D reconstruction tool that provides simple API calls, as shown in the pipeline, and also provides an open-source project with a graphical interface. The effect is also good and suitable for getting started. See details for more information https://colmap.github.io/index.html.
 
-colmap可以在不提供相机内参的情况下执行，但有具体的相机内参会更好，如果还能得到外参那么会锦上添花
+Colmap can be executed without providing camera intrinsic parameters, but it would be better to have specific camera intrinsic parameters. If extrinsic parameters can also be obtained, it would be an added bonus.
 
-建议在Linux端编译colmap
+Suggest compiling colmap on Linux.
 
-colmap提供了一个sample数据集，其中一个demo已传至网盘pcd-dataset中，具体名为pc-south-building，使用colmap方法dense重建后的效果如图
+Colmap provides a sample dataset, and one demo has been uploaded to the cloud storage pcd dataset, specifically named pc south building. The effect of dense reconstruction using Colmap method is shown in the figure.
 
-![scnu](./img/sb.png)
+![south](./img/sb.png)
 
 
 
 ## ContextCapture
 
-强大的三维重建方法，提供api支持和图形化界面，具体调用方法如cc-pipeline中automaster.py所示，需要根据自己的需要如输出格式（obj/ply/fbx....）修改对应参数，调用api需要先安装whl文件并安装cc，文件已传网盘
+Powerful 3D reconstruction method, providing API support and graphical interface. The specific calling method is shown in automaster.exe of cc pipeline. The corresponding parameters need to be modified according to your own needs, such as the output format (obj/ply/fbx...). To call the API, you need to first install the WHL file and CC. The file has been transferred to the cloud drive.
 
 
 
 ## DPT-main 
 
-单视图深度估计算法，作为深度估计较为高效的方法，用作将rgb图像转为点云数据的中间过程
+Single view depth estimation algorithm, as an efficient method for depth estimation, is used as an intermediate process for converting RGB images into point cloud.
 
 
 
 ## BinocularDisparity
 
-以 STereo TRansformer(STTR)为pipeline的双目深度估计算法，与DPT算法相比效果较好，并包含了从双目rgb图像到单视角三维点云映射的pipeline，需要自行更改方法相关参数，模型在网盘，具体内容参考STTR官方开源项目
+The binocular depth estimation algorithm using STereo TRansformer (STTR) as the pipeline has better performance compared to DPT algorithm, and includes a pipeline from binocular RGB images to single view 3D point cloud mapping. The relevant parameters of the method need to be changed by oneself, and the model is on the cloud storage. For specific content, please refer to the official open source project of STTR.
 
 
 
-## 三维模型可视化方法
+## 3D Model Visualization Methods
 
-直接使用open3d进行可视化，或者借助Blender，unity，meshlab等工具进行可视化
-
-
-
-## 模型格式说明
-
-mesh指的是网格模型，物体表面由多边形网格组成
-
-点云指的是由点的集合所组成的物体，点是离散的
+We recommend using Open3D directly for visualization. Our tools provide helper code for visualization. Of course, you can also use other tools such as Blender, Unity, or MeshLab for visualization.
 
 
 
-## 关于点云模型
+## About Point Cloud Model
 
-点云模型可以借助open3d进行体素下采样后再可视化，网盘vedio中所展示的两种不同数量的点云（18万个点和72万个点）即由两种不同的采样率所产生
-
-
-
-## 数据采集注意事项
-
-- 注意采样时图像尽量采取高的重叠率，至少30%，更细致的信息请参考colmap或cc官方文档
-- 采集过程光线强弱变化对模型质量有影响，尽量在光线稳定时采集，同时光线不宜过亮
-- 注意剔除有残影或模糊的图像
-- 如果物体由内外环组成，则需要从在内外圈采集图像外，从斜上方再次采集，否则外圈物体易附着在内圈上
-- 注意不同类型深度相机的成像原理，注意对应的成像环境要求
-- 条件允许的话，大场景建议采用无人机航拍，上图中的unity项目原始图像即为大疆无人机航拍所得
+Point cloud models can be visualized after voxel downsampling with the help of Open3D. The two different densities of point clouds (180,000 points and 720,000 points) shown in the online drive video are generated by two different sampling rates.
 
 
 
-## 网盘链接
+## Data Collection Precautions
 
-链接：https://pan.baidu.com/s/1E-dz2AE0-nIUbHsXmSNguw 
-提取码：lbek
+- Ensure a high overlap rate of images during sampling, at least 30%. For more detailed information, please refer to the official documentation of colmap or cc.
+- Variations in light intensity during the collection process can affect the quality of the model. It is advisable to collect data when the light is stable, and the light should not be too bright.
+- Be sure to exclude images with ghosting or blur.
+- If the object consists of inner and outer rings, it is necessary to collect images from both rings and additionally from a diagonal overhead perspective to prevent the outer ring from adhering to the inner ring.
+- Be aware of the imaging principles of different types of depth cameras and pay attention to the corresponding imaging environment requirements.
+- If conditions permit, it is recommended to use drone aerial photography for large scenes. The original images of the unity project shown above were obtained from a DJI drone aerial survey.
 
 
 
-## Unity应用拓展
+## Baidu Cloud Storage Link of Data
 
-相关的模型文件可以导入到unity做拓展开发，这里只提供一张效果图，原始图像采集和unity项目由本人与另外两名同学共同实现~
+Cloud storage Link: https://pan.baidu.com/s/1E-dz2AE0-nIUbHsXmSNguw 
+Password: lbek
 
+
+
+## Column Reconstruction
+
+The visualization effect of reconstructing the factory pillars using a 3D reconstruction algorithm is as follows.
+
+![column](./img/column.png)
+
+[![column](https://img.youtube.com/vi/TlnfP-N3PYI/hqdefault.jpg)](https://youtube.com/watch?v=TlnfP-N3PYI&feature=shared)
+
+
+
+## Unity Application 
+
+The following is the visualization of application development using Unity after reconstructing a 3D model from images of the SCNU campus collected by DJI drones.
 ![scnu](./img/scnu.png)
 
+Simply click on the following link of Youtube to visit our campus.
+
+[![scnu](https://img.youtube.com/vi/BtzTZSNDTOg/maxresdefault.jpg)](https://youtube.com/watch?v=BtzTZSNDTOg&feature=shared)
